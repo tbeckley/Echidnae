@@ -1,6 +1,6 @@
 import java.sql.*;
 import java.util.Date;
-import java.util.List;
+import java.util.ArrayList;
 
 public final class DebugClass 
 {	
@@ -27,42 +27,40 @@ public final class DebugClass
 		{
 			String query = "INSERT INTO HighScores(timeScored,Username,Score) VALUES(?, ?, ?);";
 			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setDate(1,  java.sql.Date.valueOf(java.time.LocalDate.now()));
+			Date currentDate = new Date();
+			java.sql.Timestamp timestamp = new java.sql.Timestamp(currentDate.getTime());
+			System.out.println("Current Date: "+currentDate);
+			ps.setTimestamp(1, timestamp);
 			ps.setString(2, s.UserName);
 			ps.setInt(3, (int)s.Score);
 				
 	    	ps.execute();
-	    	
-	      st.close();
 	    }
 	    catch (Exception e){}
 	}
 	
-	public static List<ScoreModel> GetHighScores(final int n)
+	public static ArrayList<ScoreModel> GetHighScores(final int n)
 	{
-		List scores = new List<ScoreModel>();
+		ArrayList<ScoreModel> scores = new ArrayList<ScoreModel>();
 		try
 		{
-			String query="SELECT * FROM HighScores ORDER BY Score LIMIT ?";
-			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setInt(1, n);
+			String query="SELECT * FROM HighScores ORDER BY Score DESC LIMIT "+n;
 			
-			ResultSet rs = st.executeQuery(ps);
-			ResultSetMetaData rsmd = resultSet.getMetaData();
+			ResultSet rs = st.executeQuery(query);
+			ResultSetMetaData rsmd = rs.getMetaData();
 			
 			int columnsNumber = rsmd.getColumnCount();
-			while (resultSet.next()) {
-			    for (int i = 1; i <= columnsNumber; i++) {
-			        if (i > 1) System.out.print(",  ");
-			        String columnValue = resultSet.getString(i);
-			        System.out.print(columnValue + " " + rsmd.getColumnName(i));
-			    }
-			    System.out.println("");
+			while (rs.next()) 
+			{
+				ScoreModel sc = new ScoreModel();
+				sc.Score = Long.parseLong(rs.getString("Score"));
+				sc.UserName = rs.getString("Username");
+				scores.add(sc);
 			}
 		}
 		catch(Exception e)
 		{
-			
+			System.out.println("There was an error: "+e);	
 		}
 		return scores;
 	}
