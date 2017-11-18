@@ -1,0 +1,2 @@
+C:\Users\Thomas\Source\Repos\Echidnae\DebugProject\src\DebugClass.java
+C:\Users\Thomas\Source\Repos\Echidnae\DebugProject\src\DebugProject.java
