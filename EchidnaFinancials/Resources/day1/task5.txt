@@ -1,21 +1,25 @@
 {
-  "taskName": Dong of Transportation",
+  "taskName": "Work",
   "taskChoices": [
     {
-      "msg": "Purchase 2004 Honda Civic Si (Used - $2000.00)",
-      "res": "Cost+2500,time-30"
+      "msg": "Construction Worker",
+      "res": "money+31910, health-15"
+      "rsk": "health-50"
     },
     {
-      "msg": "Purchase monthly bus passes",
-      "res": "Cost+1740,time-10"
+      "msg": "McDonalds Cashier",
+      "res": "money+9247, health-30"
+      "rsk": "health-50"
     },
     {
-      "msg": "Purchase a bike",
-      "res": "Cost+250,time-0"
+      "msg": "Stay at home",
+      "res": "money-5001"
+      "rsk": "health-20"
     },
     {
-      "msg": "Rely on luck and hitching a ride from a friend",
-      "res": "Cost+100,time+20"
+      "msg": "Bartender",
+      "res": "money+40000, health-10"
+      "rsk": "health-100"
     }
   ]
 }

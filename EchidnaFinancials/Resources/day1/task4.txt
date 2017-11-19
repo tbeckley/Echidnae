@@ -1,21 +1,25 @@
 {
-  "taskName": Shlong of Transportation",
+  "taskName": "Groceries",
   "taskChoices": [
     {
-      "msg": "Purchase 2004 Honda Civic Si (Used - $2000.00)",
-      "res": "Cost+2500,time-30"
+      "msg": "Purchase Groceries",
+      "res": "money-3000, health+50"
+      "rsk": "health-10"
     },
     {
-      "msg": "Purchase monthly bus passes",
-      "res": "Cost+1740,time-10"
+      "msg": "Go Vegan for groceries",
+      "res": "money-6000, health+35"
+      "rsk": "health-30"
     },
     {
-      "msg": "Purchase a bike",
-      "res": "Cost+250,time-0"
+      "msg": "Starve",
+      "res": "health-100"
+      "rsk": ""
     },
     {
-      "msg": "Rely on luck and hitching a ride from a friend",
-      "res": "Cost+100,time+20"
+      "msg": "Eat out every day",
+      "res": "money-5000, health-75"
+      "rsk": "health-100"
     }
   ]
 }
