@@ -10,7 +10,10 @@
 public class DebugProject {
     
     public static void main(String[] args) {
-    	
-    	DebugClass c = new DebugClass();
+    	ScoreModel s = new ScoreModel();
+    	s.UserName="Thomas";
+    	s.Score=20000;
+    	DebugClass.SaveGame(s);
+    	DebugClass.GetHighScores(10);
     }
 }
