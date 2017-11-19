@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 public class Player {
 	String name;
@@ -80,10 +79,17 @@ public class Player {
 		return tasks;
 	}
 
+	public void enactChoice(ChoiceModel ch)
+	{
+		String choice = ch.res;
+		String risk = ch.rsk;
+	}
+	
 	public static void main(String[] args) throws Exception {
 		ArrayList<TaskModel> tasks = getDayTasks(1);
 		for (int i = 0; i < 5; i++) {
 			System.out.println("" + tasks.get(i).taskName);
 		}
 	}
+
 }

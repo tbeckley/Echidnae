@@ -49,7 +49,6 @@ public final class ScoreClass
 			String query="SELECT * FROM HighScores ORDER BY Score DESC LIMIT "+n;
 			
 			ResultSet rs = st.executeQuery(query);
-			ResultSetMetaData rsmd = rs.getMetaData();
 			
 			while (rs.next()) 
 			{
