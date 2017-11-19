@@ -1,9 +1,11 @@
 package packagee;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.io.*;
 import java.util.Scanner;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class Player {
 	String name;
@@ -12,10 +14,15 @@ public class Player {
 	float expenses;
 	float assets;
 	float liabilities;
+	float shelter;
+	float health;
 
+	static Random RNG = new Random();
+	
 	public Player(float balance, float income, float expenses, float assets, float liabilities) {
 		this.balance = balance;
 		this.income = income;
+		this.expenses = expenses;
 		this.assets = assets;
 		this.liabilities = liabilities;
 	}
@@ -72,9 +79,11 @@ public class Player {
 				System.out.println("Could not find file");
 			}
 
-			System.out.println(s);
+			System.out.println("Task: "+i+" => "+s);
 
-			tasks.add(new Gson().fromJson(s, TaskModel.class));
+			Gson gson = new GsonBuilder().create();
+			TaskModel t = gson.fromJson(s, TaskModel.class);
+			tasks.add(t);
 		}
 		return tasks;
 	}
@@ -83,13 +92,35 @@ public class Player {
 	{
 		String choice = ch.res;
 		String risk = ch.rsk;
+		
+		String [] chgs = choice.split(",");
+		for(int i = 0; i < chgs.length; i++)
+			enactChange(chgs[i]);
+		
+		if(RNG.nextBoolean())
+			enactChange(risk);
+		
+	}
+	private void enactChange(String str)
+	{
+		String varToChange = str.substring(0, Math.max(str.indexOf("+"), str.indexOf("-"))).toLowerCase();
+		String chg = str.substring(Math.max(str.indexOf("+"), str.indexOf("-")), str.length());
+		
+		float c = Float.parseFloat(chg);
+		switch(varToChange)
+		{
+			case "money": balance+=c;
+			break;
+			case "shelter": shelter+=c;
+			break;
+			case "health": health+=c;
+			break;
+			default: System.out.println("Error, invalid type for what to change");
+		}
+		
 	}
 	
 	public static void main(String[] args) throws Exception {
-		ArrayList<TaskModel> tasks = getDayTasks(1);
-		for (int i = 0; i < 5; i++) {
-			System.out.println("" + tasks.get(i).taskName);
-		}
 	}
 
 }
