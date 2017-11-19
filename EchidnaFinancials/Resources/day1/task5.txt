@@ -1,0 +1,21 @@
+{
+  "taskName": Dong of Transportation",
+  "taskChoices": [
+    {
+      "msg": "Purchase 2004 Honda Civic Si (Used - $2000.00)",
+      "res": "Cost+2500,time-30"
+    },
+    {
+      "msg": "Purchase monthly bus passes",
+      "res": "Cost+1740,time-10"
+    },
+    {
+      "msg": "Purchase a bike",
+      "res": "Cost+250,time-0"
+    },
+    {
+      "msg": "Rely on luck and hitching a ride from a friend",
+      "res": "Cost+100,time+20"
+    }
+  ]
+}
