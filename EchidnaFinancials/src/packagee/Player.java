@@ -10,7 +10,7 @@ public class Player {
 	String name;
 	float balance;
 	float income;
-	ArrayList<Expense> expenses;
+	float expenses;
 	float assets;
 	float liabilities;
 
@@ -36,26 +36,19 @@ public class Player {
 	public void setIncome(float income) {
 		this.income = income;
 	}
-
-	public void addExpense(Expense expense) {
-		this.expenses.add(expense);
+	public float getExpense() {
+		return this.expenses;
 	}
-
-	public void removeExpense(Expense expense) {
-		this.expenses.remove(expense);
+	public void setExpense(float expenses) {
+		this.expenses = expenses;
 	}
 
 	public void updateBalance() {
-		this.balance = balance + income;
-		for (int i = 0; i < expenses.size(); i++)
-			this.balance -= expenses.get(i).cost;
+		this.balance = balance + income - expenses;
 	}
 
 	public boolean nextDay() {
-		float totalExpenses = 0;
-		for (int i = 0; i < expenses.size(); i++)
-			totalExpenses += expenses.get(i).cost;
-		return balance >= totalExpenses;
+		return balance + income >= expenses;
 	}
 
 	public static ArrayList<TaskModel> getDayTasks(final int day) {
