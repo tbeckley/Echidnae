@@ -1,21 +1,25 @@
 {
-  "taskName": asf of Transportation",
+  "taskName": "Investments",
   "taskChoices": [
     {
-      "msg": "Purchase 2004 Honda Civic Si (Used - $2000.00)",
-      "res": "Cost+2500,time-30"
+      "msg": "Don't invest - save up",
+      "res": ""
+      "rsk": "money-10"
     },
     {
-      "msg": "Purchase monthly bus passes",
-      "res": "Cost+1740,time-10"
+      "msg": "Store money in the bank",
+      "res": "money+5"
+      "rsk": "money-100"
     },
     {
-      "msg": "Purchase a bike",
-      "res": "Cost+250,time-0"
+      "msg": "Loan to a friend for a startup",
+      "res": "money+200"
+      "rsk": "money-1000, health-10"
     },
     {
-      "msg": "Rely on luck and hitching a ride from a friend",
-      "res": "Cost+100,time+20"
+      "msg": "Invest in the stock market",
+      "res": "money+10, health-10"
+      "rsk": "money-3000"
     }
   ]
 }
