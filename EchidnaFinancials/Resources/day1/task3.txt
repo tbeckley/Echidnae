@@ -1,21 +1,25 @@
 {
-  "taskName": Safsbnag of Transportation",
+  "taskName": "Residence",
   "taskChoices": [
     {
-      "msg": "Purchase 2004 Honda Civic Si (Used - $2000.00)",
-      "res": "Cost+2500,time-30"
+      "msg": "Purchase a House",
+      "res": "money-300000, shelter+20"
+      "rsk": "money-100000"
     },
     {
-      "msg": "Purchase monthly bus passes",
-      "res": "Cost+1740,time-10"
+      "msg": "Rent an apartment",
+      "res": "money-7200, shelter+20"
+      "rsk": "money-1000"
     },
     {
-      "msg": "Purchase a bike",
-      "res": "Cost+250,time-0"
+      "msg": "Leech off a friend",
+      "res": "money-500, shelter+5"
+      "rsk": "shelter-6"
     },
     {
-      "msg": "Rely on luck and hitching a ride from a friend",
-      "res": "Cost+100,time+20"
+      "msg": "Be a hobo",
+      "res": "health-50, shelter-5"
+      "rsk": "health-100"
     }
   ]
 }
