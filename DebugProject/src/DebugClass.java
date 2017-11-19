@@ -1,56 +1,68 @@
 import java.sql.*;
+import java.util.Date;
+import java.util.ArrayList;
 
-import java.sql.Connection; 
-import java.sql.DriverManager; 
-import java.sql.ResultSet; 
-import java.sql.Statement;
-
-public final class DebugClass
+public final class DebugClass 
 {	
-	public DebugClass()
+	private static String myDriver;
+	private static String myUrl;
+	private static Connection conn;
+	private static Statement st;
+	
+	static
 	{
 		try
-	    {
-	      	// create our mysql database connection
-	      	String myDriver = "org.gjt.mm.mysql.Driver";
-	      	String myUrl = "jdbc:mysql://18.216.91.170/EchidnaApp?autoReconnect=true&useSSL=false";
-	      	Connection conn = DriverManager.getConnection(myUrl, "teb", "thomas");
-		
-	      	// our SQL SELECT query. 
-	      	// if you only need a few columns, specify them by name instead of using "*"
-	      	String query = "SELECT * FROM Debug";
+		{
+			myDriver = "org.gjt.mm.mysql.Driver";
+			myUrl = "jdbc:mysql://18.216.91.170/EchidnaApp?useSSL=false";
+			conn = DriverManager.getConnection(myUrl, "teb", "thomas");
+			Class.forName(myDriver);
+			st = conn.createStatement();
+		} catch(Exception e){};
+	}
 	
-	      	// create the java statement
-	      	Statement st = conn.createStatement();
-		
-	      	// execute the query, and get a java resultset
-	      	ResultSet rs = st.executeQuery(DriverManager.getConnection(myUrl, "teb", "thomas"));
-		
-	      	// iterate through the java resultset
-	    	ResultSetMetaData rsmd = rs.getMetaData();
-   			System.out.println("querying SELECT * FROM XXX");
-   			int columnsNumber = rsmd.getColumnCount();
+	public static void SaveGame(final ScoreModel s)
+	{	
+		try
+		{
+			String query = "INSERT INTO HighScores(timeScored,Username,Score) VALUES(?, ?, ?);";
+			PreparedStatement ps = conn.prepareStatement(query);
+			Date currentDate = new Date();
+			java.sql.Timestamp timestamp = new java.sql.Timestamp(currentDate.getTime());
+			System.out.println("Current Date: "+currentDate);
+			ps.setTimestamp(1, timestamp);
+			ps.setString(2, s.UserName);
+			ps.setInt(3, (int)s.Score);
+				
+	    	ps.execute();
+	    }
+	    catch (Exception e){}
+	}
+	
+	public static ArrayList<ScoreModel> GetHighScores(final int n)
+	{
+		ArrayList<ScoreModel> scores = new ArrayList<ScoreModel>();
+		try
+		{
+			String query="SELECT * FROM HighScores ORDER BY Score DESC LIMIT "+n;
+			
+			ResultSet rs = st.executeQuery(query);
+			ResultSetMetaData rsmd = rs.getMetaData();
+			
+			int columnsNumber = rsmd.getColumnCount();
 			while (rs.next()) 
 			{
-				for (int i = 1; i <= columnsNumber; i++) 
-				{
-					if (i > 1) System.out.print(",  ");
-					String columnValue = rs.getString(i);
-					System.out.print(columnValue + " " + rsmd.getColumnName(i));
-				}
-			   System.out.println("");
-   			}
-	    	st.close();
-	    }
-	    catch (Exception e)
-	    {
-	      System.err.println("Got an exception! ");
-	      System.err.println(e.getMessage());
-	    }
-  	}
-  	
-	public static void SaveGame(String name, String score)
-	{
-		
+				ScoreModel sc = new ScoreModel();
+				sc.Score = Long.parseLong(rs.getString("Score"));
+				sc.UserName = rs.getString("Username");
+				scores.add(sc);
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("There was an error: "+e);	
+		}
+		return scores;
 	}
+	
 }

@@ -6,12 +6,14 @@
 		<root_path>\</root_path>
 		<output_path>classes\</output_path>
 		<source_path>src\</source_path>
-		<jdkprofile_ref/>
-		<compiler_ref/>
+		<jdkprofile_ref>JDK version 1.8.0_151</jdkprofile_ref>
+		<compiler_ref>&lt;Default&gt;</compiler_ref>
 		<ant_ref/>
 	</settings>
 	<ant_events/>
-	<run_items/>
+	<run_items>
+		<item run="DebugProject"/>
+	</run_items>
 	<runtimes>
 		<runtime>
 			<label>&lt;Default&gt;</label>
@@ -19,18 +21,28 @@
 			<applet_ref/>
 			<debugger_ref/>
 			<param/>
-			<run/>
+			<run>DebugProject</run>
 			<verify>true</verify>
 		</runtime>
 	</runtimes>
-	<libraries/>
+	<libraries>
+		<library_ref>JDBC</library_ref>
+	</libraries>
 	<files>
 		<include>
 			<folderitem>
 				<path>src</path>
 			</folderitem>
 			<fileitem>
+				<path>src\DebugClass.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\DebugProject.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\ScoreModel.java</path>
 				<folder>src</folder>
 			</fileitem>
 		</include>

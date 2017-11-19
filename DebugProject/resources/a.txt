@@ -1,0 +1,21 @@
+{
+  "taskName": "Buy a car",
+  "taskChoices": [
+    {
+      "msg": "Mitsubishi",
+      "res": "Cost+300,time-10"
+    },
+    {
+      "msg": "Buy a bus pass",
+      "res": "Cost+300,time-10"
+    },
+    {
+      "msg": "Bus to work",
+      "res": "Cost+300,time-10"
+    },
+    {
+      "msg": "Buy a craigslist beater",
+      "res": "Cost+300,time-10"
+    }
+  ]
+}

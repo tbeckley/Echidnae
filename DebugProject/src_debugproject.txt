@@ -1,2 +1,5 @@
+C:\Users\Thomas\Source\Repos\Echidnae\DebugProject\src\ChoiceModel.java
 C:\Users\Thomas\Source\Repos\Echidnae\DebugProject\src\DebugClass.java
 C:\Users\Thomas\Source\Repos\Echidnae\DebugProject\src\DebugProject.java
+C:\Users\Thomas\Source\Repos\Echidnae\DebugProject\src\ScoreModel.java
+C:\Users\Thomas\Source\Repos\Echidnae\DebugProject\src\TaskModel.java
