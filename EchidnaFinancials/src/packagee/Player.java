@@ -44,14 +44,7 @@ public class Player {
 	}
 	
 	
-	
 	public static void main(String[] args) throws Exception {
-		Player p = new Player(1000, 0, 0, 0, 0);
-		
-		File f = new File("sample.txt");
-		FileReader fr = new FileReader(f);
-		BufferedReader bf = new BufferedReader(fr);
-		
 		
 	}
 }
