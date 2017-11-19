@@ -1,14 +1,15 @@
+import java.util.ArrayList;
 
 public class Player {
 	String name;
 	float balance;
 	float income;
-	float expenses;
+	ArrayList<Expense> expenses;
 	float assets;
 	float liabilities;
 	
 	public Player(String name, float balance, float income, float expenses, float assets, float liabilities) {
-		this.name = name; this.balance = balance; this.income = income; this.expenses = expenses;
+		this.name = name; this.balance = balance; this.income = income;
 		this.assets = assets; this.liabilities = liabilities;
 	}
 	
@@ -27,14 +28,22 @@ public class Player {
 	public void setIncome(float income) {
 		this.income = income;
 	}
-	public float getExpenses() {
-		return this.expenses;
+	public void addExpense(Expense expense) {
+		this.expenses.add(expense);
 	}
-	public void setExpenses(float expenses) {
-		this.expenses = expenses;
+	public void removeExpense(Expense expense) {
+		this.expenses.remove(expense);
 	}
 	public void updateBalance() {
-		this.balance = balance + income - expenses;
+		this.balance = balance + income;
+		for(int i = 0; i < expenses.size(); i++) this.balance -= expenses.get(i).cost;
+	}
+	public boolean nextDay() {
+		float totalExpenses = 0;
+		for(int i = 0; i < expenses.size(); i++) totalExpenses += expenses.get(i).cost;
+		return balance > totalExpenses;
 	}
 
 }
+
+
