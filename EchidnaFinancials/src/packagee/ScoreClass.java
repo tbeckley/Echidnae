@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Date;
 import java.util.ArrayList;
 
-public final class DebugClass 
+public final class ScoreClass 
 {	
 	private static String myDriver;
 	private static String myUrl;
@@ -49,9 +49,7 @@ public final class DebugClass
 			String query="SELECT * FROM HighScores ORDER BY Score DESC LIMIT "+n;
 			
 			ResultSet rs = st.executeQuery(query);
-			ResultSetMetaData rsmd = rs.getMetaData();
 			
-			int columnsNumber = rsmd.getColumnCount();
 			while (rs.next()) 
 			{
 				ScoreModel sc = new ScoreModel();
