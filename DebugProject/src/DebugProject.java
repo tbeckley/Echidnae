@@ -1,18 +1,37 @@
 import java.util.Random;
- 
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.*;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class DebugProject {
     
     public static void main(String[] args) {
-    	boolean save=false;
-    	
-    	if(save)
+    	String s="";
+    	try
     	{
-	    	ScoreModel s = new ScoreModel();
-	    	s.UserName="Thomas";
-	    	Random rng = new Random();
-	    	s.Score=Math.abs(rng.nextLong()) % 30000;
-	    	DebugClass.SaveGame(s);
+    		String filePath = new File("").getAbsolutePath();
+    		filePath = filePath + "\\..\\resources\\"+"a.txt";
+    		System.out.println(filePath);
+    		
+    		File f = new File(filePath);
+	    	Scanner inputFile = new Scanner(f);
+	    	
+			while(inputFile.hasNext()){ //if there is still something to read
+			     s = s.concat(inputFile.next());
+			}
+			System.out.println(s);
+			
+			Gson gson = new Gson();
+			TaskModel t;
+			t = gson.fromJson(s, TaskModel.class);
+			System.out.println(t.taskChoices[0].msg);
     	}
-    	DebugClass.GetHighScores(10);
+    	catch(Exception e)
+    	{
+    		System.out.println("Exception: "+e);
+    	}
     }
 }
