@@ -1,4 +1,6 @@
+package packagee;
 import java.util.ArrayList;
+import java.io.*;
 
 public class Player {
 	String name;
@@ -8,14 +10,11 @@ public class Player {
 	float assets;
 	float liabilities;
 	
-	public Player(String name, float balance, float income, float expenses, float assets, float liabilities) {
+	public Player(float balance, float income, float expenses, float assets, float liabilities) {
 		this.name = name; this.balance = balance; this.income = income;
 		this.assets = assets; this.liabilities = liabilities;
 	}
 	
-	public String getName() {
-		return this.name;
-	}
 	public float getbalance() {
 		return this.balance;
 	}
@@ -41,9 +40,20 @@ public class Player {
 	public boolean nextDay() {
 		float totalExpenses = 0;
 		for(int i = 0; i < expenses.size(); i++) totalExpenses += expenses.get(i).cost;
-		return balance > totalExpenses;
+		return balance >= totalExpenses;
 	}
-
+	
+	
+	
+	public static void main(String[] args) throws Exception {
+		Player p = new Player(1000, 0, 0, 0, 0);
+		
+		File f = new File("sample.txt");
+		FileReader fr = new FileReader(f);
+		BufferedReader bf = new BufferedReader(fr);
+		
+		
+	}
 }
 
 
