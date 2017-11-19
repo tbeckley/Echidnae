@@ -2,20 +2,24 @@
   "taskName": "Method of Transportation",
   "taskChoices": [
     {
-      "msg": "Purchase 2004 Honda Civic Si (Used - $2000.00)",
-      "res": "Cost+2500,time-30"
+      "msg": "Purchase 2004 Honda Civic Si",
+      "res": "money-2500, shelter+5"
+      "rsk": "money-1000"
     },
     {
       "msg": "Purchase monthly bus passes",
-      "res": "Cost+1740,time-10"
+      "res": "money-1740, shelter+1"
+      "rsk": "money-100"
     },
     {
       "msg": "Purchase a bike",
-      "res": "Cost+250,time-0"
+      "res": "money-250, health+10"
+      "rsk": "health-50"
     },
     {
-      "msg": "Rely on luck and hitching a ride from a friend",
-      "res": "Cost+100,time+20"
+      "msg": "Hitch-hike",
+      "res": "money-100, health-10"
+      "rsk": "health-100"
     }
   ]
 }
